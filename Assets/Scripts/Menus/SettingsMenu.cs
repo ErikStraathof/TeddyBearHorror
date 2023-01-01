@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SettingsMenu : MenuController
 {
+    void Awake()
+    {
+        type = MenuType.SettingsMenu;    
+    }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -12,22 +12,31 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-    GameState currentState;
+    public static GameManager instance;
+    private GameState currentState;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        instance = this;
+        SwitchState(GameState.Starting);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SwitchState(GameState gameState)
     {
-        
-    }
+        currentState = gameState;
 
-    public void SwitchState()
-    { 
-        
+        switch (gameState)
+        {
+            case GameState.Starting:
+                break;
+            case GameState.Running:
+                break;
+            case GameState.Paused:
+                break;
+            case GameState.Ending:
+                break;
+            default:
+                break;
+        }
     }
 }
