@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <SplitView>
+        <ui:VisualElement name="left-panel" focusable="false" style="height: auto; width: auto;">
+            <InspectorView />
+        </ui:VisualElement>
+        <ui:VisualElement name="right-panel" style="height: auto; width: auto;">
+            <BehaviorTreeView focusable="true" name="BehaviorTreeView" />
+        </ui:VisualElement>
+    </SplitView>
+</ui:UXML>

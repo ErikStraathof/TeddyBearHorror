@@ -1,24 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public enum NodeState
+public abstract class BehaviorNode : ScriptableObject
 {
-    Running,
-    Success,
-    Failure
-}
+    public string GUID;
+    public BehaviorNode parent = null;
+    public BehaviorState state = BehaviorState.Running;
+    public bool isRoot = false;
+    public bool started = false;
 
-public abstract class BehaviorNode
-{
-    public BehaviorNode parent;
-    public NodeState state;
-
-    public virtual void Enter()
+    public BehaviorState Update()
     {
-        state = NodeState.Running;
-        Execute();
+        if (!started)
+        {
+            Enter();
+            started = true;
+        }
+
+        state = Execute();
+
+        if (state == BehaviorState.Success || state == BehaviorState.Failure)
+        {
+            Exit();
+        }
+        return state;
     }
 
-    public abstract void Execute();
+    public abstract void Enter();
+    public abstract BehaviorState Execute();
+    public virtual void Exit()
+    {
+        Debug.Log("Exit");
+    }
 }

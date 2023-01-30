@@ -5,6 +5,7 @@ using UnityEngine;
 public interface State
 {
     public void Enter();
+    public void HandleInput();
     public void Execute();
     public void Exit();
 }
